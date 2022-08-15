@@ -6,4 +6,4 @@ RUN npm install express
 RUN npm i whatsapp-web.js
 RUN npm i qrcode-terminal
 COPY . /app
-CMD nodemon SendMessage.js
+CMD node SendMessage.js
