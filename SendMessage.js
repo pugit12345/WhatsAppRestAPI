@@ -1,6 +1,9 @@
 const exp = require('express');
 const res = require('express/lib/response');
 const qrcode = require('qrcode-terminal');
+const ip = require('ip');
+const ipAddress = ip.address();
+
 
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const client = new Client({
@@ -77,5 +80,6 @@ client.sendMessage(chatId, text);
 const port = process.env.PORT || 4321 
 ep.listen(port, function(){
     console.log(`i am listening to  posr ${port}`);
+    console.log(`Network access via: ${ipAddress}:${port}!`);
 })  
 
