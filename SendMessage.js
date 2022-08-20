@@ -2,12 +2,17 @@ const exp = require('express');
 const res = require('express/lib/response');
 const qrcode = require('qrcode-terminal');
 const ip = require('ip');
+const locateChrome = require('locate-chrome');
+
 const ipAddress = ip.address();
 
+const executablePath = await new Promise(resolve => locateChrome(arg => resolve(arg)));
+const browser = await puppeteer.launch({ executablePath });
 
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const client = new Client({
     authStrategy: new LocalAuth()
+   
 });
 
 client.on('qr', qr => {
