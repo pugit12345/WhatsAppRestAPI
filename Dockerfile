@@ -7,5 +7,6 @@ RUN npm i whatsapp-web.js
 RUN npm i qrcode-terminal
 RUN npm install ip
 RUN npm install  chromium
+RUN npm  install locate-chrome
 COPY . /app
 CMD node SendMessage.js
