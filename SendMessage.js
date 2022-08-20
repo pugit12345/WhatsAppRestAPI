@@ -3,13 +3,18 @@ const res = require('express/lib/response');
 const qrcode = require('qrcode-terminal');
 const ip = require('ip');
 const locateChrome = require('locate-chrome');
+const puppeteer = require('puppeteer');
 
-const ipAddress = ip.address();
+(async () => {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.goto('https://example.com');
+    await page.screenshot({path: 'example.png'});
+  
+    await browser.close();
+  })();
 
-async function runCode() {
-const executablePath = await new Promise(resolve => locateChrome(arg => resolve(arg)));
-const browser =  await puppeteer.launch({ executablePath });
-}
+
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const client = new Client({
     authStrategy: new LocalAuth()
@@ -26,12 +31,7 @@ ep.use(exp.json());
 
 client.on('ready', () => {
     console.log('Client is ready!');
-    runCode().then(result => {
-        if (result.errors) {
-          console.error(result.errors);
-        }
-        console.log(result.log);
-      });
+
 });
 
  
