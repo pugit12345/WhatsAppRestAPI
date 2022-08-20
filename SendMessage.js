@@ -92,6 +92,6 @@ client.sendMessage(chatId, text);
 const port = process.env.PORT || 4321 
 ep.listen(port, function(){
     console.log(`i am listening to  posr ${port}`);
-    console.log(`Network access via: ${ipAddress}:${port}!`);
+   // console.log(`Network access via: ${ipAddress}:${port}!`);
 })  
 
